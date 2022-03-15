@@ -22,17 +22,15 @@ const styles = StyleSheet.create({
     backgroundColor: '#221154',
     width: 100,
     height: 100,
-    alignSelf:"flex-end",
   },
   box2:{
     backgroundColor: '#abdbe3',
     width: 100,
-    height: 100,
+    height: 200,
   },
   box3:{
     backgroundColor: '#eab676',
     width: 100,
-    height: 100,
-    alignSelf: "flex-start",
+    height: 300,
   }
 });

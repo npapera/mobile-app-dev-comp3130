@@ -14,15 +14,13 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
+    flexDirection: 'column',
+    justifyContent: 'flex-start',
+    alignItems: 'stretch',
   },
   box1:{
     backgroundColor: '#221154',
-    width: 100,
     height: 100,
-    alignSelf:"flex-end",
   },
   box2:{
     backgroundColor: '#abdbe3',
@@ -31,8 +29,6 @@ const styles = StyleSheet.create({
   },
   box3:{
     backgroundColor: '#eab676',
-    width: 100,
     height: 100,
-    alignSelf: "flex-start",
   }
 });

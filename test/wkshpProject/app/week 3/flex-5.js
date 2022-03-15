@@ -22,7 +22,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#221154',
     width: 100,
     height: 100,
-    alignSelf:"flex-end",
   },
   box2:{
     backgroundColor: '#abdbe3',
@@ -33,6 +32,5 @@ const styles = StyleSheet.create({
     backgroundColor: '#eab676',
     width: 100,
     height: 100,
-    alignSelf: "flex-start",
   }
 });
