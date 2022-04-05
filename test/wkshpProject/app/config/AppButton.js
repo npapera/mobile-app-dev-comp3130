@@ -4,9 +4,9 @@ import React from 'react'
 import AppColors from './AppColors'
 import AppText from './AppText'
 
-function AppButton({title, style}) {
+function AppButton({title, style, onPress}) {
   return (
-    <TouchableOpacity onPress={() => console.log(title)}>
+    <TouchableOpacity onPress={onPress}>
         <View style={[styles.buttonBack, style]}>
             <AppText style={styles.buttonText}> {title} </AppText>
         </View>

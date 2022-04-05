@@ -1,22 +1,22 @@
 import React from 'react';
 import { StyleSheet, View , Image } from 'react-native';
 
-import AppColors from './app/config/AppColors';
-import AppScreen from './app/config/AppScreen';
-import AppText from './app/config/AppText';
-import AppButton from './app/config/AppButton';
+import AppColors from '../config/AppColors';
+import AppScreen from '../config/AppScreen';
+import AppText from '../config/AppText';
+import AppButton from '../config/AppButton';
 
-export default function App() {
+function WelcomeScreen({navigation}) {
   return (
     <AppScreen style={styles.container}>
       <View style={styles.welcomeContainer}>
-        <Image style={styles.logo} source={require('./assets/cash_buddy_logo.png')}/>
+        <Image style={styles.logo} source={require('../../assets/cash_buddy_logo.png')}/>
         <AppText style={styles.textHeading}>Welcome to CashBuddy</AppText>
       </View>
 
       <View style={styles.buttonContainer}>
-        <AppButton title='Login' style={styles.lightButton}></AppButton>
-        <AppButton title='Register' style={styles.darkButton}></AppButton>
+        <AppButton title='Login' onPress={() => navigation.navigate("Login")} style={styles.lightButton}></AppButton>
+        <AppButton title='Register' onPress={() => navigation.navigate("Register")} style={styles.darkButton}></AppButton>
       </View>
     </AppScreen>
   );
@@ -51,7 +51,9 @@ const styles = StyleSheet.create({
   },
   logo:{
     marginTop: 50,
-    width: 200,
-    height: 200,
+    width: 150,
+    height: 150,
   },
 });
+
+export default WelcomeScreen;
