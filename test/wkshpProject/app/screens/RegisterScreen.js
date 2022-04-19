@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, View , Image, TextInput, TouchableNativeFeedbackBase } from 'react-native';
+import { StyleSheet, View , Image } from 'react-native';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 
@@ -20,6 +20,9 @@ const schema = Yup.object().shape(
 
 function RegisterScreen({navigation}) {
 
+  const[fullName, setFullName] = useState("");
+  const[userEmail, setUserEmail] = useState("");
+
   return (
     <AppScreen style={styles.container}>
       <View style={styles.registerContainer}>
@@ -31,7 +34,14 @@ function RegisterScreen({navigation}) {
         initialValues={{username: '', fullname: '', email: '', password: ''}}
         onSubmit={values => 
           {console.log(values);
-          navigation.navigate("Configure Record")}}
+          navigation.navigate("Home", {
+            screen: "Dashboard",
+            params:{
+              paramName: values.fullname,
+              paramEmail: values.email,
+              paramImage: require('../../assets/newUser.jpg')
+            }
+          });}}
         validationSchema={schema}
         >
         {({handleChange, handleSubmit, errors, setFieldTouched, touched}) => (

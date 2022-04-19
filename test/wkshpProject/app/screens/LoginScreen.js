@@ -7,25 +7,32 @@ import AppScreen from '../config/AppScreen';
 import AppText from '../config/AppText';
 import AppButton from '../config/AppButton';
 import AppTextInput from '../config/AppTextInput';
+import DataManager from '../config/DataManager';
 
 const users = [
   {
+    id: "user1", 
     username: "jdoe7",
     fullname: "John Doe",
     email: "jdoe@gmail.com",
-    password: "7777"
+    password: "7777",
+    image: require('../../assets/john.jpg')
   },
   {
+    id: "user2", 
     username: "tstark9",
     fullname: "Tony Stark",
     email: "tstark@gmail.com",
-    password: "!@#$"
+    password: "9999",
+    image: require('../../assets/t_stark.png')
   },
   {
+    id: "user3", 
     username: "pp3",
     fullname: "Peter Parker",
     email: "pp3@gmail.com",
-    password: "i<3theavengers"
+    password: "3333",
+    image: require('../../assets/holland.jpg')
   }
 ];
 
@@ -36,10 +43,20 @@ const schema = Yup.object().shape(
   }
 );
 
+const getUser = ({username}) => {
+  return users.find((user) => user.username === username)
+}
+
 const validateUser = ({username, password}) => {
   return(
     users.filter((user) => user.username === username && user.password === password).length>0 
   );
+}
+
+const createUser = ({username}) => {
+  let commonData = DataManager.getInstance();
+  let userID = getUser({username}).id;
+  commonData.setUserID(userID);
 }
 
 function LoginScreen({navigation}) {
@@ -55,8 +72,15 @@ function LoginScreen({navigation}) {
         initialValues={{username: '', password: ''}}
         onSubmit={(values, {resetForm}) => {
           if(validateUser(values)){
-            console.log(values);
-            navigation.navigate("Dashboard");
+            createUser(values);
+            navigation.navigate("Home", {
+              screen: "Dashboard",
+              params:{
+                paramName: getUser(values).fullname,
+                paramEmail: getUser(values).email,
+                paramImage: getUser(values).image
+              },
+            });
           } else {
             resetForm();
             alert("Invalid login details")
